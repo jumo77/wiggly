@@ -12,21 +12,10 @@ export class RoomService {
   ) {}
 
   async findOne(id: number): Promise<Room> {
-    const room = await this.roomRepository.findOne(id);
+    const room = await this.roomRepository.findOne({ where: { id } });
 
     if (!room) throw new NotFoundException(`There is no room under id ${id}`);
 
     return room;
-  }
-
-  async findByUserId(userId: number): Promise<number> {
-    const room: Room = await this.roomRepository.findOne({ userId: userId });
-
-    if (!room)
-      throw new NotFoundException(
-        'There is no room of user under id ' + userId.toString(),
-      );
-
-    return room[0].id;
   }
 }

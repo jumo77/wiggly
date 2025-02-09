@@ -17,7 +17,7 @@ export class UserService {
   ) {}
 
   async findOne(id: number): Promise<User> {
-    const user = await this.userRepository.findOne(id);
+    const user = await this.userRepository.findOne({ where: { id } });
 
     if (!user) {
       throw new UnauthorizedException(`There is no user under id ${id}`);
@@ -27,7 +27,11 @@ export class UserService {
   }
 
   async findOneByLoginId(username: string) {
-    return await this.userRepository.findOne({ loginId: username });
+    return await this.userRepository.findOne({
+      where: {
+        loginId: username,
+      },
+    });
   }
 
   async create(createUserDto: SignupDto) {
@@ -43,7 +47,9 @@ export class UserService {
   }
 
   async findProfile(userId: number): Promise<Profile> {
-    const profile = await this.profileRepository.findOne({ userId: userId });
+    const profile = await this.profileRepository.findOne({
+      where: { userId },
+    });
 
     if (!profile)
       throw new UnauthorizedException(

@@ -1,4 +1,3 @@
-import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
@@ -6,7 +5,6 @@ import * as cookieParser from 'cookie-parser';
 
 import { AppModule } from './app.module';
 
-import { AuthIoAdapter } from './chat/adapters/auth.adapter';
 import * as path from 'path';
 import * as admin from 'firebase-admin';
 
@@ -27,15 +25,6 @@ async function bootstrap() {
     credentials: true,
   });
   app.use(cookieParser());
-
-  app.useGlobalPipes(
-    new ValidationPipe({
-      whitelist: true,
-      transform: true,
-    }),
-  );
-
-  // app.useWebSocketAdapter(new AuthIoAdapter(app));
 
   const options = new DocumentBuilder()
     .setTitle('Realtime Chat')
