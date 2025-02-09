@@ -84,7 +84,6 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
     await this.chatService.addChat(addMessageDto);
 
-    console.log(this.server.adapter['rooms']);
     this.server.to('room: ' + roomId.toString()).emit('chat', addMessageDto);
   }
 

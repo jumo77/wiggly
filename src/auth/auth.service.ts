@@ -40,6 +40,9 @@ export class AuthService {
   }
 
   async singUp(userDto: SignupDto) {
+    const result = await this.checkDupl({ email: userDto.loginId });
+    if (result.result === 'E-mail is already using.') return null;
+
     const user = await this.userService.create({
       loginId: userDto.loginId,
       password: await this.hash(userDto.password),
@@ -93,9 +96,7 @@ export class AuthService {
     const user = await this.userService.findOneByLoginId(userDto.loginId);
 
     if (!user) {
-      throw new NotFoundException(
-        this.result(`There is no user under this username`),
-      );
+      throw new NotFoundException(`There is no user under this username`);
     }
 
     const passwordEquals = await bcrypt.compare(

@@ -20,9 +20,9 @@ export class RoomService {
   }
 
   async findByUserId(userId: number): Promise<number> {
-    const room: Room[] = await this.roomRepository.find({ userId: userId });
+    const room: Room = await this.roomRepository.findOne({ userId: userId });
 
-    if (room.length === 0)
+    if (!room)
       throw new NotFoundException(
         'There is no room of user under id ' + userId.toString(),
       );
