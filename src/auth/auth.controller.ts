@@ -101,10 +101,10 @@ export class AuthController {
     console.log(req);
   }
 
-  @Get('/apple/redirect')
+  @Post('/apple/redirect')
   @UseGuards(AuthGuard('apple'))
   async appleRedirect(@Req() req: Request) {
-    console.log(req);
+    return await this.authService.socialLogin(req);
   }
 
   @Patch('/fcm_token')

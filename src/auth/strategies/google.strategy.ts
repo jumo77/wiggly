@@ -8,7 +8,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     super({
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: '/auth/google/redirect', // 이 부분은 구글 콘솔에서 설정한대로. 승인된 리디렉션 URI
+      callbackURL: '/45f732703af8e55bfcc0607aa508d915e681e14390fb98f4d99f458b81292c82/auth/google/redirect',
       scope: ['email', 'profile'],
     });
   }

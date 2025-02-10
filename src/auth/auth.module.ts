@@ -12,6 +12,7 @@ import { MailModule } from '../mail/mail.module';
 import { GoogleStrategy } from './strategies/google.strategy';
 import { KakaoStrategy } from './strategies/kakao.strategy';
 import { FacebookStrategy } from './strategies/facebook.strategy';
+import { AppleStrategy } from './strategies/apple.strategy';
 
 @Module({
   imports: [
@@ -24,7 +25,7 @@ import { FacebookStrategy } from './strategies/facebook.strategy';
     MailModule,
   ],
   controllers: [AuthController],
-  providers: [AuthService, GoogleStrategy, KakaoStrategy, FacebookStrategy],
+  providers: [AuthService, GoogleStrategy, KakaoStrategy, FacebookStrategy, AppleStrategy],
   exports: [AuthService],
 })
 export class AuthModule {}
