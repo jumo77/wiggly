@@ -81,7 +81,7 @@ export class AuthController {
 
   @Get('/google/redirect')
   @UseGuards(AuthGuard('google'))
-  async googleAuthRedirect(@Req() req) {
+  async googleRedirect(@Req() req) {
     return await this.authService.socialLogin(req);
   }
 
@@ -93,6 +93,18 @@ export class AuthController {
   @UseGuards(AuthGuard('facebook'))
   async facebookRedirect(@Req() req) {
     return await this.authService.socialLogin(req);
+  }
+
+  @Get('/apple')
+  @UseGuards(AuthGuard('apple'))
+  async apple(@Req() req: Request) {
+    console.log(req);
+  }
+
+  @Get('/apple/redirect')
+  @UseGuards(AuthGuard('apple'))
+  async appleRedirect(@Req() req: Request) {
+    console.log(req);
   }
 
   @Patch('/fcm_token')

@@ -116,7 +116,7 @@ export class AuthService {
       });
     } catch (err) {
       console.error(new Date(), err);
-      return null;
+      throw new UnauthorizedException();
     }
   }
 
