@@ -1,0 +1,6 @@
+.env
+.gitignore
+*/.idea
+*/node_modules
+*/dist
+*/.wrangler
