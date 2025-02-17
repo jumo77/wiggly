@@ -1,4 +1,4 @@
-require('dotenv').config({ path: '~/wiggly/wiggly-nest/.env' });
+require('dotenv').config({ path: '~/wiggly/.env' });
 const express = require('express');
 const {pg, connect, end} = require('./db/db');
 const {get} = require('./handlers/get')

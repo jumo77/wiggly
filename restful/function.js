@@ -1,4 +1,4 @@
-require('dotenv').config({ path: '~/wiggly/wiggly-nest/.env' });
+require('dotenv').config({ path: '~/wiggly/.env' });
 const jwt = require("jsonwebtoken");
 
 // 프로그램에서 사용하는 camelCase을 DB에서 사용하는 snake_case로 변수명 혹은 값 수정

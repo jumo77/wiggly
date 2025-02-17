@@ -1,4 +1,4 @@
-require('dotenv').config({ path: '~/wiggly/wiggly-nest/.env' });
+require('dotenv').config({ path: '~/wiggly/.env' });
 const PG = require('pg').Client
 const pg = new PG({
     database: process.env.DB_NAME,
