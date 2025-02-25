@@ -1,4 +1,6 @@
 import {
+  HttpException,
+  HttpStatus,
   Injectable,
   NotFoundException,
   UnauthorizedException,
@@ -15,6 +17,10 @@ import { JwtPayload } from './strategies/interfaces/jwt-payload.interface';
 import { Socket } from 'socket.io';
 import { MailService } from '../mail/mail.service';
 import { MailDto } from '../user/dto/mail.dto';
+import { Response } from 'express';
+import { SchedulerRegistry } from '@nestjs/schedule';
+import { denyDiv, verifiedDiv } from './html';
+import { SignupDto } from '../user/dto/signup.dto';
 
 @Injectable()
 export class AuthService {
@@ -22,82 +28,109 @@ export class AuthService {
     private readonly userService: UserService,
     private readonly jwtService: JwtService,
     private readonly mailService: MailService,
+    private readonly schedulerRegistry: SchedulerRegistry,
   ) {}
 
   // 회원 중복 확인
   async checkDupl(dto: MailDto) {
-    if (!dto.email) return this.result('Invalid mail');
+    if (!dto.email)
+      throw new HttpException('E-mail is invalide', HttpStatus.BAD_REQUEST);
     const candidate = await this.userService.findOneByLoginId(dto.email);
-
-    if (candidate) return this.result('E-mail is already using.');
-    else return { result: 'You can use this E-mail.' };
+    if (candidate)
+      throw new HttpException('E-mail is already using.', HttpStatus.CONFLICT);
   }
 
   // 회원가입
-  async singUp(userDto: AuthDto) {
+  async singUp(userDto: SignupDto) {
     // 회원 중복 확인 이후 같은 이메일로 회원가입한 사람 없겠지만 미연에 방지하는 중복 검사
-    const result = await this.checkDupl({ email: userDto.loginId });
-    if (result.result === 'E-mail is already using.') return null;
+    await this.checkDupl({ email: userDto.loginId });
 
     const user = await this.userService.create({
       loginId: userDto.loginId,
       password: await this.hash(userDto.password),
     });
+    await this.userService.createProfile(user.id, userDto.birthday);
 
-    return await this.generateTokens(user.id);
-  }
-
-  // 메일 주소로 인증코드 보내기
-  async checkMail(user: User) {
+    // 메일 주소로 인증 메일
     try {
-      // 메일 주소를 암호화하는데, 비밀번호를 salt로 해싱
+      // 메일 주소 암호화에서 비밀번호를 salt로 해싱
       const hashed = await bcrypt.hash(user.loginId, user.password);
       await this.mailService.sendMail(user.loginId, hashed);
+      // timeout 설정
+      // 어차피 지워야할 복호화값으로 지워야할 timeout 식별
+      this.schedulerRegistry.addTimeout(
+        user.loginId + hashed,
+        setTimeout(async () => {
+          await this.userService.deleteUser(user.loginId);
+        }, 3 * 24 * 60 * 60 * 1000),
+      );
       return this.result('Sent mail');
     } catch (e) {
       console.error(new Date(), e);
-      return this.result(e.toString());
+      throw new HttpException(e.toString(), 500);
     }
   }
 
   // 회원의 메일 주소 보유 인증
-  async validateMail(value: string, user: User) {
-    // 해시 알고리즘은 복호화가 사실상 불가능해 암호화
-    const hash = await bcrypt.hash(user.loginId, user.password);
-    // 암호화한 데이터와 암호가 같다면 회원이 인증된 회원임을 인증
-    if (value === hash) {
+  async validateMail(mail: string, code: string) {
+    const user = await this.userService.findOneByLoginId(mail);
+    if (!user)
+      throw new NotFoundException('There are no user under this mail!');
+    // 복호화된 암호 코드는 timeout queue에 저장되어있으니 식별
+    if (this.schedulerRegistry.doesExist('timeout', mail + code)) {
+      // 저장된 값이 맞는 것이 확인되면 회원 인증 성공
       await this.userService.updateUser({
         id: user.id,
         validated: true,
       });
-      return this.result('validated');
+      // 시간이 지나고 삭제되는 것을 취소
+      this.schedulerRegistry.deleteTimeout(mail + code);
+
+      return verifiedDiv;
     } else {
       throw new UnauthorizedException();
+    }
+  }
+
+  // 본인의 메일이 아닐 때.
+  async deny(mail: string, code: string) {
+    if (this.schedulerRegistry.doesExist('timeout', mail + code)) {
+      // 저장된 값이 맞는 것이 확인되면 회원 인증 성공
+      await this.userService.deleteUser(mail);
+      // 시간이 지나고 삭제되는 것을 취소
+      this.schedulerRegistry.deleteTimeout(mail + code);
+      return denyDiv;
     }
   }
 
   // 로그인
   async signIn(userDto: AuthDto) {
     const user = await this.validateUser(userDto);
-
-    return await this.generateTokens(user.id);
+    return this.generateTokens(user.id);
   }
 
   // 소셜로 로그인
-  async socialLogin(req: any) {
+  async socialLogin(req: any, res: Response, social: string) {
     // 소셜에서 회원을 구분하는 내용을 받아온다.
     // strategy에서 정의한 done, cb 등의 함수에서 data를 담아서 보낸다.
     const id = req.user.id;
     // 회원이 우리 서버에 회원가입된 상태인지 판별
-    let user = await this.userService.findOneByLoginId(id.toString());
+    let user = await this.userService.findOne({
+      loginId: id.toString(),
+      password: social,
+    });
     if (!user)
       // 회원가입되지 않은 회원이라면 새로운 회원으로 가입
       user = await this.userService.create({
         loginId: id.toString(),
-        password: '',
+        // 소셜 로그인 경로 확정
+        password: social,
       });
     // 가입한 회원의 id를 담는 token 발급
-    return this.generateTokens(user.id);
+    const token = await this.generateTokens(user.id);
+
+    res.cookie('access_token', token.accessToken, this.access);
+    res.cookie('refresh_token', token.refreshToken, this.refresh);
   }
 
   // 회원이 입력한 이메일과 비밀번호 검증
@@ -120,11 +153,11 @@ export class AuthService {
     if (passwordEquals) return user;
 
     // 불일치하면 불일치한다고 전달
-    throw new UnauthorizedException( 'Incorrect password');
+    throw new UnauthorizedException('Incorrect password');
   }
 
   // 회원 정보 수정
-  async updateUser(dto: any){
+  async updateUser(dto: any) {
     // 이메일 수정시 메일 인증 취소 처리
     if (dto.loginId) dto.validated = false;
     // 비밀번호 수정시 암호화
@@ -198,4 +231,15 @@ export class AuthService {
   private result(message: string) {
     return { result: message };
   }
+
+  private access = {
+    httpOnly: true,
+    // 10분 60초 1000ms
+    maxAge: 10 * 60 * 1000,
+  };
+  private refresh = {
+    httpOnly: true,
+    // 30일 24시간 60분 60초 1000ms
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+  };
 }

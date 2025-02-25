@@ -1,0 +1,20 @@
+.flex, .flexRow, .flexColumn{
+    display: flex;
+}
+
+.flexColumn{
+    flex-direction: column;
+}
+
+.flexRow{
+    flex-direction: row;
+}
+
+.topBottom{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.sB{
+    justify-content: space-between;
+}

@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity('profile')
+@Entity('table_profile')
 export class Profile {
   @PrimaryGeneratedColumn()
   id: number;
@@ -31,4 +31,7 @@ export class Profile {
 
   @Column({ name: 'is_male' })
   isMale: boolean;
+
+  @Column()
+  birthday: Date;
 }

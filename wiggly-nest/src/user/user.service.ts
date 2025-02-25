@@ -1,4 +1,8 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { Repository } from 'typeorm';
@@ -17,7 +21,7 @@ export class UserService {
   ) {}
 
   // id를 통해 user 찾기
-  async findOne(id: number): Promise<User> {
+  async findOneById(id: number): Promise<User> {
     const user = await this.userRepository.findOne({ where: { id } });
 
     if (!user) {
@@ -28,12 +32,13 @@ export class UserService {
   }
 
   // loginId를 통해 user 찾기
-  async findOneByLoginId(username: string) {
-    return await this.userRepository.findOne({
-      where: {
-        loginId: username,
-      },
-    });
+  async findOneByLoginId(loginId: string) {
+    return await this.userRepository.findOne({ where: { loginId } });
+  }
+
+  // findOne 그대로 사용
+  async findOne(find: any) {
+    return await this.userRepository.findOne({ where: find });
   }
 
   // user를 저장한 뒤 저장한 user의 데이터 반환
@@ -45,9 +50,19 @@ export class UserService {
 
   // user 수정, id에 맞는 user가 있는지 확인
   async updateUser(updateUserDto: any) {
-    const user = await this.findOne(updateUserDto.id);
+    const user = await this.findOneById(updateUserDto.id);
     if (!user) throw new UnauthorizedException();
     return this.userRepository.update(updateUserDto.id, updateUserDto);
+  }
+
+  async deleteUser(loginId: string) {
+    const user = await this.findOneByLoginId(loginId);
+    if (!user) throw new NotFoundException();
+    return this.userRepository.delete(user.id);
+  }
+
+  async createProfile(userId: number, birthday: Date): Promise<Profile> {
+    return this.profileRepository.save({ userId, birthday });
   }
 
   // userId를 통해 profile 찾기

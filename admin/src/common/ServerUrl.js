@@ -1,1 +1,2 @@
 export const ServerUrl = 'https://duddlfdlek.rhymeinspace.com/8623427a6a1af5255684eafad56fec75878df974a47e92799dfcb8f319eb8a7e/'
+export const PathOfIt = '/c57b1d4be076c7c98026ce4fe86b995de537975923dfdb6fcd22d915dbc48923/'

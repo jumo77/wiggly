@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import * as nodemailer from 'nodemailer';
+import { mail } from '../auth/html';
 
 @Injectable()
 export class MailService {
@@ -22,7 +23,7 @@ export class MailService {
       from: process.env.MAIL_ID,
       to: to,
       subject: process.env.MAIL_TITLE,
-      html: process.env.MAIL_HTML + code,
+      html: mail(to, code),
     };
 
     // 실패시 서버가 다운 되지 않도록 try catch

@@ -3,67 +3,47 @@ import {
   Controller,
   Get,
   Headers,
-  HttpException,
-  HttpStatus,
   Param,
-  Patch,
   Post,
   Req,
   Res,
   UseGuards,
 } from '@nestjs/common';
 
+import { Response } from 'express';
+
 import { AuthService } from './auth.service';
 
 import { AuthDto } from 'src/user/dto/auth.dto';
-import { UserService } from '../user/user.service';
 import { MailDto } from '../user/dto/mail.dto';
 import { AuthGuard } from '@nestjs/passport';
+import { confirmDiv, denyDiv, successDiv } from './html';
+import { SignupDto } from '../user/dto/signup.dto';
 
 // 주소/auth 로 시작하는 모든 요청 수신
 @Controller('auth')
 export class AuthController {
-  constructor(
-    private readonly authService: AuthService,
-    private readonly userService: UserService,
-  ) {}
-
-  @Post('/dupl')
-  async dupl(@Body() dto: MailDto) {
-    return await this.authService.checkDupl(dto);
-  }
+  constructor(private readonly authService: AuthService) {}
 
   @Post('/signUp')
-  async signUp(@Body() userDto: AuthDto) {
-    const tokens = await this.authService.singUp(userDto);
-
-    if (!tokens) {
-      throw new HttpException(
-        'User under this username already exists',
-        HttpStatus.BAD_REQUEST,
-      );
-    }
-
-    return tokens;
-  }
-
-  // 메일 보내기 요청
-  @Get('/mail')
-  async mail(@Headers('access_token') token: string) {
-    const payload = await this.authService.verifyAccessToken(token);
-    const user = await this.userService.findOne(payload.id);
-    return await this.authService.checkMail(user);
+  async signUp(@Body() userDto: SignupDto) {
+    return this.authService.singUp(userDto);
   }
 
   // 발급 받은 메일의 토큰을 인증
-  @Post('/mail')
-  async validateMail(
-    @Body() mail: any,
-    @Headers('access_token') token: string,
-  ) {
-    const payload = await this.authService.verifyAccessToken(token);
-    const user = await this.userService.findOne(payload.id);
-    return await this.authService.validateMail(mail.mail, user);
+  @Get('/mail/verify')
+  async validateMail(@Param('mail') mail: string, @Param('code') code: string) {
+    return await this.authService.validateMail(mail, code);
+  }
+
+  @Get('/mail/confirm')
+  async confirmDeny(@Param('mail') mail: string, @Param('code') code: string) {
+    return confirmDiv(mail, code);
+  }
+
+  @Get('/mail/deny')
+  async deny(@Param('mail') mail: string, @Param('code') code: string) {
+    return this.authService.deny(mail, code);
   }
 
   @Post('/signIn')
@@ -73,47 +53,55 @@ export class AuthController {
 
   // 카카오 로그인 및 로그인 성공시 회원 데이터 송신
   @Get('/kakao')
-  @UseGuards(AuthGuard('kakao')) // 이걸로 PassportStrategy 상속받은 클래스들 실행
-  async kakao(@Req() req: any) {
-    return await this.authService.socialLogin(req);
+  // 이걸로 PassportStrategy 상속받은 클래스들 실행
+  @UseGuards(AuthGuard('kakao'))
+  async kakao(@Req() req: any, @Res() res: Response) {
+    await this.authService.socialLogin(req, res, 'kakao');
   }
 
   // 구글 로그인 요청
   @Get('/google')
-  @UseGuards(AuthGuard('google')) // 이걸로 PassportStrategy 상속받은 클래스들 실행
+  // 이걸로 PassportStrategy 상속받은 클래스들 실행
+  @UseGuards(AuthGuard('google'))
   async googleAuth() {}
 
   // 구글에서 로그인 성공시 회원 데이터 송신
   @Get('/google/redirect')
-  @UseGuards(AuthGuard('google')) // 이걸로 PassportStrategy 상속받은 클래스들 실행
-  async googleRedirect(@Req() req) {
-    return await this.authService.socialLogin(req);
+  // 이걸로 PassportStrategy 상속받은 클래스들 실행
+  @UseGuards(AuthGuard('google'))
+  async googleRedirect(@Req() req: any, @Res() res: Response) {
+    await this.authService.socialLogin(req, res, 'google');
+    res.send(successDiv);
   }
 
   // 페이스북 로그인 요청
   @Get('/facebook')
-  @UseGuards(AuthGuard('facebook')) // 이걸로 PassportStrategy 상속받은 클래스들 실행
+  // 이걸로 PassportStrategy 상속받은 클래스들 실행
+  @UseGuards(AuthGuard('facebook'))
   async facebook() {}
 
   // 페이스북에서 로그인 성공시 회원 데이터 송신
   @Get('/facebook/redirect')
-  @UseGuards(AuthGuard('facebook')) // 이걸로 PassportStrategy 상속받은 클래스들 실행
-  async facebookRedirect(@Req() req) {
-    return await this.authService.socialLogin(req);
+  // 이걸로 PassportStrategy 상속받은 클래스들 실행
+  @UseGuards(AuthGuard('facebook'))
+  async facebookRedirect(@Req() req: any, @Res() res: Response) {
+    await this.authService.socialLogin(req, res, 'facebook');
+    res.send(successDiv);
   }
 
   // 애플 로그인 요청
   @Get('/apple')
-  @UseGuards(AuthGuard('apple')) // 이걸로 PassportStrategy 상속받은 클래스들 실행
-  async apple(@Req() req: Request) {
-    console.log(req);
-  }
+  // 이걸로 PassportStrategy 상속받은 클래스들 실행
+  @UseGuards(AuthGuard('apple'))
+  async apple(@Req() req: Request) {}
 
   // 애플 로그인 성공시 회원 데이터 송신
   @Post('/apple/redirect')
-  @UseGuards(AuthGuard('apple')) // 이걸로 PassportStrategy 상속받은 클래스들 실행
-  async appleRedirect(@Req() req: Request) {
-    return await this.authService.socialLogin(req);
+  // 이걸로 PassportStrategy 상속받은 클래스들 실행
+  @UseGuards(AuthGuard('apple'))
+  async appleRedirect(@Req() req: any, @Res() res: Response) {
+    await this.authService.socialLogin(req, res, 'apple');
+    res.send(successDiv);
   }
 
   // access token 만료시 header에 refresh token을 담아 request 보낼 주소
@@ -126,10 +114,7 @@ export class AuthController {
 
   // 사용자의 데이터 수정 (ex: 비밀번호, fcm token 등)
   @Post('/update')
-  async update(
-    @Headers('access_token') token: string,
-    @Body() dto: any,
-  ) {
+  async update(@Headers('access_token') token: string, @Body() dto: any) {
     const payload = await this.authService.verifyAccessToken(token);
     dto.id = payload.id;
 

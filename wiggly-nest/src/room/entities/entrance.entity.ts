@@ -5,7 +5,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-@Entity({ name: 'entrance_table' })
+@Entity('table_entrance')
 export class Entrance {
   @PrimaryGeneratedColumn()
   id?: number;

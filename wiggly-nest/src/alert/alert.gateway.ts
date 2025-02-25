@@ -57,7 +57,7 @@ export class AlertGateway implements OnGatewayConnection, OnGatewayDisconnect {
     }
 
     // 꺼낸 id값으로 사용자 불러오기
-    const user = await this.userService.findOne(payload.id);
+    const user = await this.userService.findOneById(payload.id);
 
     // 불러온 사용자가 없을 때 접속 종료
     if (!user) {
@@ -133,7 +133,7 @@ export class AlertGateway implements OnGatewayConnection, OnGatewayDisconnect {
     } else {
       // 접속 중이 아니라면 초대할 사용자의 FCM token을 가져와 FCM으로 알림 전송
       // 초대할 사람의 FCM token 가져오기
-      const user = await this.userService.findOne(inviteDto.userId);
+      const user = await this.userService.findOneById(inviteDto.userId);
       // 초대할 사람의 FCM token이 없다면 알림 X
       if (!user.fcmToken) return;
       // 있다면 초대한 사람의 FCM token으로 roomId를 담아 알림 요청

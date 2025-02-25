@@ -25,7 +25,7 @@ export class AppleStrategy extends PassportStrategy(Strategy, 'apple') {
           '-----END PRIVATE KEY-----',
         passReqToCallback: true,
       },
-      async function(req, accessToken, refreshToken, idToken, profile, cb) {
+      async function (req, accessToken, refreshToken, idToken, profile, cb) {
         try {
           const idTokenDecoded = jwtService.decode(idToken);
           // redirect url에 송신하는 데이터

@@ -8,12 +8,12 @@ import { ConfigModule } from '@nestjs/config';
 import { RoomModule } from './room/room.module';
 import { AlertModule } from './alert/alert.module';
 import { MailModule } from './mail/mail.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: '~/wiggly/.env',
-      isGlobal: true,
+      envFilePath: '/Users/jumokang/wiggly/.env',
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -25,6 +25,7 @@ import { MailModule } from './mail/mail.module';
       database: process.env.DB_NAME,
       autoLoadEntities: true,
     }),
+    ScheduleModule.forRoot(),
     ChatModule,
     UserModule,
     AuthModule,

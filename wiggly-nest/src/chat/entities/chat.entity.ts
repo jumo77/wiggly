@@ -5,7 +5,7 @@ import {
   CreateDateColumn,
 } from 'typeorm';
 
-@Entity('chat')
+@Entity('table_chat')
 export class Chat {
   @PrimaryGeneratedColumn()
   id: number;

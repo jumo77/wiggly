@@ -17,13 +17,12 @@ export const Sidebar = ()=> {
 
     return (
         <aside style={{
-            background: 'black',
+            background: '#0F0F0F',
             width: '400px',
             height: '100vh',
             display: 'flex',
             flexDirection: 'column',
             overflow: 'scroll',
-            boxShadow: '4px 4px 12px 0px #0000001F',
             position: 'fixed',
             padding: '45px',
             gap: '30px',

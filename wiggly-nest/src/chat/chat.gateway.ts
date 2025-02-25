@@ -60,7 +60,7 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
     }
 
     // 꺼낸 id값으로 사용자 불러오기
-    const user = payload && (await this.userService.findOne(payload.id));
+    const user = payload && (await this.userService.findOneById(payload.id));
 
     // 불러온 사용자가 없을 때 접속 종료
     if (!user) {
