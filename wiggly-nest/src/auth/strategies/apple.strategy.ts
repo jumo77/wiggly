@@ -1,39 +1,39 @@
 import { Injectable } from '@nestjs/common';
-import { PassportStrategy } from '@nestjs/passport';
+import { PassportStrategy, AuthGuard } from '@nestjs/passport';
 import { JwtService } from '@nestjs/jwt';
-import { Strategy } from 'passport-apple';
+import { Strategy, Profile } from '@arendajaelu/nestjs-passport-apple';
 import { UserService } from '../../user/user.service';
 
 @Injectable()
 export class AppleStrategy extends PassportStrategy(Strategy, 'apple') {
   constructor(
-    private readonly jwtService: JwtService,
-    private readonly userService: UserService,
+	  private readonly jwtService:JwtService
   ) {
-    super(
-      {
-        clientID: process.env.APPLE_CLIENT_ID,
-        teamID: process.env.APPLE_TEAM_ID,
-        callbackURL: process.env.APPLE_CALLBACK_URL,
-        keyID: process.env.APPLE_KEY_ID,
-        privateKeyString:
+    super({
+	clientID: process.env.APPLE_CLIENT_ID,
+teamID: process.env.APPLE_TEAM_ID,
+callbackURL: process.env.APPLE_CALLBACK_URL,
+keyID: process.env.APPLE_KEY_ID,
+key:
           '-----BEGIN PRIVATE KEY-----\n' +
-          'MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgZ+YiXfEMoUTHvt7C\n' +
-          'ePAqa70RpHiYZw9qPzjhtDECVbegCgYIKoZIzj0DAQehRANCAAQwjua5Hf/vQzOI\n' +
-          'i5cRD58gIviFueRGlqVIfLmNTWX8g9SlnO+pAr5vaTGx/IwPB46Vy2cQbdTnsrkn\n' +
-          'PHSgmbnU\n' +
+          'MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgKyewmYD19rUuPhDK\n' +
+          'H4NUqu6pWt47Kuz9vAeH2+VcZxGgCgYIKoZIzj0DAQehRANCAAQLkApP77w4PlUv\n' +
+          'gy6G49XeoQGD9lClY/NjOCM2YKq9L9K7Y6bxtv1vEQZEO75l8mFhlip9IB569Amp\n' +
+          'hqhxU+Zq\n' +
           '-----END PRIVATE KEY-----',
-        passReqToCallback: true,
-      },
-      async function (req, accessToken, refreshToken, idToken, profile, cb) {
-        try {
-          const idTokenDecoded = jwtService.decode(idToken);
-          // redirect url에 송신하는 데이터
-          cb(null, { id: idTokenDecoded['email'] });
-        } catch (error) {
-          console.error(error);
-        }
-      },
-    );
+      scope: ['email', 'name'],
+      passReqToCallback: false,
+    });
+  }
+
+  async validate(_accessToken: string, _refreshToken: string, profile: Profile) {
+    return {
+      emailAddress: profile.email,
+      firstName: profile.name?.firstName || '',
+      lastName: profile.name?.lastName || '',
+    };
   }
 }
+
+@Injectable()
+export class AppleOAuthGuard extends AuthGuard('apple') {}

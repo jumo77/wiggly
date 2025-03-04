@@ -20,12 +20,12 @@ app.post('/*', post)
 app.patch('/*', patch)
 
 // 시작 설정
-app.listen(3000, ()=>{
+app.listen(3002, ()=>{
     console.log('Starting Restful.API...')
     connect()
     // 사용 스키마 선택
     pg.query('set search_path to '+process.env.DB_SCHEMA)
-    console.log('Listening on 3000')
+    console.log('Listening on 3002')
 });
 
 

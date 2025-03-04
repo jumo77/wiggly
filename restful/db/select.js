@@ -12,9 +12,7 @@ const select = async (table, where) =>{
             .map(([key, value], index)=>{
                 const operation = /[!<>~]/
                 if (operation.test(key)) {
-                    console.log('filter works')
-                    const op = key.match(operation)
-                    console.log(op)
+		    const op = key.match(operation)
                     if (value){
                         values.push(value)
                         return key.split(op[0])[0]+' '+op[0]+'= $'+ (index+1).toString()
@@ -27,8 +25,6 @@ const select = async (table, where) =>{
                     return key+' = $'+ (index+1).toString()
                 }
             }).join(' and ')
-        console.log(w)
-        console.log(values)
         const r = await pg.query(`select * from ${table} where ${w}`, values)
         if (where.hasOwnProperty('id')) return r.rows[0]
         return r.rows

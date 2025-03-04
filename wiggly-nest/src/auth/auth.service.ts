@@ -45,17 +45,18 @@ export class AuthService {
     // 회원 중복 확인 이후 같은 이메일로 회원가입한 사람 없겠지만 미연에 방지하는 중복 검사
     await this.checkDupl({ email: userDto.loginId });
 
-    const user = await this.userService.create({
-      loginId: userDto.loginId,
-      password: await this.hash(userDto.password),
-    });
-    await this.userService.createProfile(user.id, userDto.birthday);
-
+    const pw = await this.hash(userDto.password);
+    console.log(pw);
     // 메일 주소로 인증 메일
     try {
       // 메일 주소 암호화에서 비밀번호를 salt로 해싱
-      const hashed = await bcrypt.hash(user.loginId, user.password);
-      await this.mailService.sendMail(user.loginId, hashed);
+      const hashed = await bcrypt.hash(userDto.loginId, pw);
+      await this.mailService.sendMail(userDto.loginId, hashed);
+    const user = await this.userService.create({
+      loginId: userDto.loginId,
+      password: pw,
+    });
+    await this.userService.createProfile(user.id, userDto.birthday);
       // timeout 설정
       // 어차피 지워야할 복호화값으로 지워야할 timeout 식별
       this.schedulerRegistry.addTimeout(
@@ -161,7 +162,8 @@ export class AuthService {
     // 이메일 수정시 메일 인증 취소 처리
     if (dto.loginId) dto.validated = false;
     // 비밀번호 수정시 암호화
-    if (dto.password) dto.password = this.hash(dto.password);
+    if (dto.password) dto.password = await this.hash(dto.password);
+    console.log(dto);
     // 결과 전달
     return this.userService.updateUser(dto);
   }
@@ -178,7 +180,7 @@ export class AuthService {
       });
     } catch (err) {
       console.error(new Date(), err);
-      throw new UnauthorizedException();
+      throw err;
     }
   }
 
@@ -199,13 +201,13 @@ export class AuthService {
 
       return tokens.accessToken;
     } catch (e) {
-      throw new UnauthorizedException();
+      throw e;
     }
   }
 
   // 회원의 id값을 담은 access token, refresh token 제작을 통해
   // 로그인을 1달에 한번만 해도 되게끔 만들어 loginId와 password가 노출되지 않도록 함
-  private async generateTokens(id: number) {
+  private async generateTokens(id: any) {
     const payload = { id, role: 'web_anon' };
 
     const accessToken = this.jwtService.sign(payload, {
@@ -222,9 +224,14 @@ export class AuthService {
 
   // socket.io에서 access token에서 회원의 id를 반환
   async fromSocket(client: Socket): Promise<JwtPayload> {
-    const token = client.handshake.headers['access_token'];
-    if (Array.isArray(token)) return this.verifyAccessToken(token[0]);
-    else return this.verifyAccessToken(token);
+    try{
+      const token = client.handshake.headers['access_token'];
+      if (Array.isArray(token)) return this.verifyAccessToken(token[0]);
+      else return this.verifyAccessToken(token);
+    } catch(e){
+	    console.log('fromSocket catch');
+      throw e;
+    }
   }
 
   // response로 보낼 json 객체로 만들어주는 함수.

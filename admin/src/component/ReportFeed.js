@@ -6,10 +6,10 @@ import {Table} from "./ui/Table";
 import {map} from "../common/TextMap";
 import {useNavigate} from "react-router-dom";
 
-export const ReportPost = () => {
+export const ReportFeed = () => {
     const [report, setReport] = useState(null)
     useEffect(() => {
-        fetch(ServerUrl+'/view_report_post')
+        fetch(ServerUrl+'/view_report_feed')
             .then(r=>r.json())
             .then(r=>setReport(snakeToCamel(r)))
     }, []);
@@ -17,7 +17,7 @@ export const ReportPost = () => {
     const width =["10%","10%","10%", "10%", "10%","50%"]
 
     const navigate = useNavigate()
-    const onClick = (id) => navigate('/report',{state:{ id, type: 'post' }})
+    const onClick = (id) => navigate('/report',{state:{ id, type: 'feed' }})
 
     return(
         <Section title={'신고 조회'}>

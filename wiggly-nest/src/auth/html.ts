@@ -42,7 +42,7 @@ export const confirmDiv = (email: string, code: string) => `
   display: flex; flex-direction: column; 
   justify-content: center; align-items: center; text-align: center;">
     <div style="margin-top: 20px; font-weight: bold">회원님의 계정이 아니신가요?</div>
-    <a href="http://localhost:3001/auth/mail/deny?email=${email}&code=${code}"
+    <a href="https://duddlfdlek.rhymeinspace.com/45f732703af8e55bfcc0607aa508d915e681e14390fb98f4d99f458b81292c82/auth/mail/deny?email=${email}&code=${code}"
     style="width: 80%; margin:10px; padding:20px; display: block;
     box-sizing: border-box; text-align: center; text-decoration:none;
     background-color: #5db9a2; color: white;">아닙니다.</a>
@@ -63,11 +63,11 @@ export const mail = (email: string, code: string) => `
       계정 가입을 완료하려면 이메일 주소를 인증하세요.
       이를 통해 계정을 안전하게 유지하고 암호 복구 방법으로 사용할 수 있습니다.
     </p>
-    <a href='http://localhost:3001/auth/mail/verify?email=${email}&code=${code}'
+    <a href='https://duddlfdlek.rhymeinspace.com/45f732703af8e55bfcc0607aa508d915e681e14390fb98f4d99f458b81292c82/auth/mail/verify?email=${email}&code=${code}'
     style="width: calc(100% - 20px); margin:10px; padding:20px; display: block;
     box-sizing: border-box; text-align: center; text-decoration:none;
     background-color: #5db9a2; color: white;">이메일 주소 인증</a>
-    <a href="http://localhost:3001/auth/mail/confirm?email=${email}&code=${code}"
+    <a href="https://duddlfdlek.rhymeinspace.com/45f732703af8e55bfcc0607aa508d915e681e14390fb98f4d99f458b81292c82/auth/mail/confirm?email=${email}&code=${code}"
     style="color: #546dbd; text-decoration:none; font-weight: bold;
     display: block; padding: 10px">회원님의 계정이 아니신가요?</a>
   </div>

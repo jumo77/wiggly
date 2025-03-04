@@ -48,8 +48,17 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
     console.log(new Date(), client.handshake.address, 'connection');
 
     // 접속한 사용자의 요청 속 jwt에서 id값 꺼내기
-    const payload = await this.authService.fromSocket(client);
+    let payload;
 
+    try {
+    payload = await this.authService.fromSocket(client);
+    } catch (e) {
+      client.emit('alertConnection', 'Not Valid JWT');
+      console.error(new Date(), 'invalid jwt', e);
+      client.disconnect(true);
+
+      return;
+    }
     // 사용자의 요청에 jwt가 없을 때 접속 종료
     if (!payload) {
       client.emit('chatConnection','Not Valid Request');
@@ -82,8 +91,18 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
     // 접속 해제한 시간, ip 주소 로그
     console.log(new Date(), client.handshake.address, 'disconnection');
 
-    // 접속한 사용자의 요청 속 jwt에서 id값 꺼내기
-    const payload = await this.authService.fromSocket(client);
+// 접속한 사용자의 요청 속 jwt에서 id값 꺼내기
+    let payload;
+
+    try {
+    payload = await this.authService.fromSocket(client);
+    } catch (e) {
+      client.emit('alertConnection', 'Not Valid JWT');
+      console.error(new Date(), 'invalid jwt', e);
+      client.disconnect(true);
+
+      return;
+    }
 
     // 사용자의 요청에 jwt가 없을 때 정지
     if (!payload) {

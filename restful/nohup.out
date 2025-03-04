@@ -1,0 +1,126 @@
+Starting Restful.API...
+Connecting to Database...
+Listening on 3002
+Connected to PostgreSQL
+error: syntax error at or near "&"
+    at /home/ubuntu/wiggly/restful/node_modules/pg/lib/client.js:535:17
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async select (/home/ubuntu/wiggly/restful/db/select.js:6:19)
+    at async get (/home/ubuntu/wiggly/restful/handlers/get.js:48:23) {
+  length: 90,
+  severity: 'ERROR',
+  code: '42601',
+  detail: undefined,
+  hint: undefined,
+  position: '24',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'scan.l',
+  line: '1244',
+  routine: 'scanner_yyerror'
+}
+error: column "user_id" does not exist
+    at /home/ubuntu/wiggly/restful/node_modules/pg/lib/client.js:535:17
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async select (/home/ubuntu/wiggly/restful/db/select.js:29:19)
+    at async get (/home/ubuntu/wiggly/restful/handlers/get.js:48:23) {
+  length: 176,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "view_experience.userId".',
+  position: '37',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3723',
+  routine: 'errorMissingColumn'
+}
+error: column "user_id" does not exist
+    at /home/ubuntu/wiggly/restful/node_modules/pg/lib/client.js:535:17
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async select (/home/ubuntu/wiggly/restful/db/select.js:29:19)
+    at async get (/home/ubuntu/wiggly/restful/handlers/get.js:48:23) {
+  length: 176,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: 'Perhaps you meant to reference the column "view_experience.userId".',
+  position: '37',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '3723',
+  routine: 'errorMissingColumn'
+}
+error: relation "view_post" does not exist
+    at /home/ubuntu/wiggly/restful/node_modules/pg/lib/client.js:535:17
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async select (/home/ubuntu/wiggly/restful/db/select.js:6:19)
+    at async get (/home/ubuntu/wiggly/restful/handlers/get.js:48:23) {
+  length: 108,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '15',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1449',
+  routine: 'parserOpenTable'
+}
+[ '~', index: 7, input: 'content~', groups: undefined ]
+Starting Restful.API...
+Connecting to Database...
+Listening on 3002
+Connected to PostgreSQL
+{ feed_id: 13, tag: '해쉬태그', user_id: 51 }
+(13,'해쉬태그',51)
+error: column "user_id" of relation "table_feed_hashtag" does not exist
+    at /home/ubuntu/wiggly/restful/node_modules/pg/lib/client.js:535:17
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async insert (/home/ubuntu/wiggly/restful/db/insert.js:27:15)
+    at async post (/home/ubuntu/wiggly/restful/handlers/post.js:11:19) {
+  length: 138,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: undefined,
+  position: '44',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_target.c',
+  line: '1065',
+  routine: 'checkInsertTargets'
+}

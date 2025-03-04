@@ -43,9 +43,18 @@ export class AlertGateway implements OnGatewayConnection, OnGatewayDisconnect {
   async handleConnection(client: Socket) {
     // 접속 시작한 시간, ip 주소 로그
     console.log(new Date(), client.handshake.address, 'connection');
+    let payload: JwtPayload;
 
     // 접속한 사용자의 요청 속 jwt에서 id값 꺼내기
-    const payload: JwtPayload = await this.authService.fromSocket(client);
+    try {
+    payload = await this.authService.fromSocket(client);
+    } catch (e) {
+      client.emit('alertConnection', 'Not Valid JWT');
+      console.error(new Date(), 'invalid jwt', e);
+      client.disconnect(true);
+
+      return;
+    }
 
     // 사용자의 요청에 jwt가 없을 때 접속 종료
     if (!payload) {
@@ -83,8 +92,15 @@ export class AlertGateway implements OnGatewayConnection, OnGatewayDisconnect {
     console.log(new Date(), client.handshake.address, 'disconnection');
 
     // 접속한 사용자의 요청 속 jwt에서 id값 꺼내기
-    const payload = await this.authService.fromSocket(client);
+    let payload: JwtPayload; 
+    try {
+      payload = await this.authService.fromSocket(client);
+    } catch (e) {
+      client.emit('alertConnection', 'Not Valid JWT');
+      console.error(new Date(), 'invalid jwt', e);
 
+      return;
+    }
     // 사용자의 요청에 jwt가 없을 때 정지
     if (!payload) {
       client.emit('alertConnection', 'Not Valid Request');
@@ -158,7 +174,7 @@ export class AlertGateway implements OnGatewayConnection, OnGatewayDisconnect {
     console.log(new Date(), 'ignore from', ignorerId, 'to', IgnoreDto);
 
     // 초대한 사용자 접속 중 여부 확인
-    if (this.server.sockets.adapter.rooms.get('user: ' + ignoreDto.inviterId)) {
+    if (this.server.adapter['rooms'].has('user: ' + ignoreDto.inviterId)) {
       // 접속 중이라면 무시한 사람의 이름, 프로필 사진을 담아 무시 알림 송신
       const { profilePic, nickname } = await this.userService.findProfile(
         ignorerId,

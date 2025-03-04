@@ -13,7 +13,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: '/Users/jumokang/wiggly/.env',
+      envFilePath: '/home/ubuntu/wiggly/.env',
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',

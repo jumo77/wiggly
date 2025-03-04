@@ -21,6 +21,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@arendajaelu/nestjs-passport-apple": "^2.0.5",
     "@nestjs/common": "^8.0.0",
     "@nestjs/config": "^1.1.5",
     "@nestjs/core": "^8.0.0",
@@ -42,7 +43,6 @@
     "firebase-admin": "^13.1.0",
     "nodemailer": "^6.10.0",
     "passport": "^0.5.2",
-    "passport-apple": "^2.0.2",
     "passport-facebook": "^3.0.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.0",

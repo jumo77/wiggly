@@ -3,7 +3,7 @@ import {
   Controller,
   Get,
   Headers,
-  Param,
+  Query,
   Post,
   Req,
   Res,
@@ -11,8 +11,10 @@ import {
 } from '@nestjs/common';
 
 import { Response } from 'express';
+import { ApiTags } from '@nestjs/swagger';
 
 import { AuthService } from './auth.service';
+import { AppleOAuthGuard } from './strategies/apple.strategy';
 
 import { AuthDto } from 'src/user/dto/auth.dto';
 import { MailDto } from '../user/dto/mail.dto';
@@ -20,6 +22,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { confirmDiv, denyDiv, successDiv } from './html';
 import { SignupDto } from '../user/dto/signup.dto';
 
+@ApiTags('oauth')
 // 주소/auth 로 시작하는 모든 요청 수신
 @Controller('auth')
 export class AuthController {
@@ -32,22 +35,23 @@ export class AuthController {
 
   // 발급 받은 메일의 토큰을 인증
   @Get('/mail/verify')
-  async validateMail(@Param('mail') mail: string, @Param('code') code: string) {
+  async validateMail(@Query('email') mail: string, @Query('code') code: string){
     return await this.authService.validateMail(mail, code);
   }
 
   @Get('/mail/confirm')
-  async confirmDeny(@Param('mail') mail: string, @Param('code') code: string) {
+  async confirmDeny(@Query('email') mail: string, @Query('code') code: string) {
     return confirmDiv(mail, code);
   }
 
   @Get('/mail/deny')
-  async deny(@Param('mail') mail: string, @Param('code') code: string) {
+  async deny(@Query('email') mail: string, @Query('code') code: string) {
     return this.authService.deny(mail, code);
   }
 
   @Post('/signIn')
   async signIn(@Body() userDto: AuthDto) {
+	  console.log(userDto);
     return await this.authService.signIn(userDto);
   }
 
@@ -57,6 +61,7 @@ export class AuthController {
   @UseGuards(AuthGuard('kakao'))
   async kakao(@Req() req: any, @Res() res: Response) {
     await this.authService.socialLogin(req, res, 'kakao');
+    res.send(successDiv);
   }
 
   // 구글 로그인 요청
@@ -92,16 +97,22 @@ export class AuthController {
   // 애플 로그인 요청
   @Get('/apple')
   // 이걸로 PassportStrategy 상속받은 클래스들 실행
-  @UseGuards(AuthGuard('apple'))
-  async apple(@Req() req: Request) {}
+  @UseGuards(AppleOAuthGuard)
+  async apple(@Req() req: Request) {
+    console.log(req);
+  }
 
   // 애플 로그인 성공시 회원 데이터 송신
   @Post('/apple/redirect')
   // 이걸로 PassportStrategy 상속받은 클래스들 실행
-  @UseGuards(AuthGuard('apple'))
-  async appleRedirect(@Req() req: any, @Res() res: Response) {
-    await this.authService.socialLogin(req, res, 'apple');
-    res.send(successDiv);
+  @UseGuards(AppleOAuthGuard)
+  async appleRedirectGet(@Req() req: any, @Res() res: Response) {
+	  return req.user;
+//	  console.log('get called');
+//	  console.log(Object.keys(req));
+//	  console.log(req.user);
+//          await this.authService.socialLogin(req, res, 'apple');
+//    res.send(successDiv);
   }
 
   // access token 만료시 header에 refresh token을 담아 request 보낼 주소

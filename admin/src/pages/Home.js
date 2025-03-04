@@ -2,7 +2,7 @@ import {UserData} from "../component/UserData";
 import {Entrence} from "../component/Entrence";
 import {Ask} from "../component/Ask";
 import {ReportUser} from "../component/ReportUser";
-import {ReportPost} from "../component/ReportPost";
+import {ReportFeed} from "../component/ReportFeed";
 
 export const Home = () =>
     <main style={{marginLeft: 400}}>
@@ -10,6 +10,6 @@ export const Home = () =>
         <UserData/>
         <Entrence/>
         <Ask/>
-        <ReportPost/>
+        <ReportFeed/>
         <ReportUser/>
     </main>

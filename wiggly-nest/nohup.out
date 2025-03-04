@@ -1,0 +1,276 @@
+
+> wiggly@0.0.1 start
+> NODE_OPTIONS=--max_old_space_size=2048 nest start
+
+DeprecationWarning: 'createImportEqualsDeclaration' has been deprecated since v4.8.0. Decorators are no longer supported for this function. Callers should switch to an overload that does not accept a 'decorators' parameter.
+DeprecationWarning: 'createNodeArray' has been deprecated since v4.0.0. Use the appropriate method on 'ts.factory' or the 'factory' supplied by your transformation context instead.
+DeprecationWarning: 'createMethodDeclaration' has been deprecated since v4.8.0. Decorators have been combined with modifiers. Callers should switch to an overload that does not accept a 'decorators' parameter.
+DeprecationWarning: 'updateClassDeclaration' has been deprecated since v4.8.0. Decorators have been combined with modifiers. Callers should switch to an overload that does not accept a 'decorators' parameter.
+DeprecationWarning: 'getMutableClone' has been deprecated since v4.0.0. Use an appropriate `factory.update...` method instead, use `setCommentRange` or `setSourceMapRange`, and avoid setting `parent`.
+DeprecationWarning: 'createLiteral' has been deprecated since v4.0.0. Use `factory.createStringLiteral`, `factory.createStringLiteralFromNode`, `factory.createNumericLiteral`, `factory.createBigIntLiteral`, `factory.createTrue`, `factory.createFalse`, or the factory supplied by your transformation context instead.
+(node:161206) [DEP0053] DeprecationWarning: The `util.isObject` API is deprecated. Please use `arg !== null && typeof arg === "object"` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:161219) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:33 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:34 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +259ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:34 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:34 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:34 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMailModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:34 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:34 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mDiscoveryModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:34 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:34 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mScheduleModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:34 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:34 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmCoreModule dependencies initialized[39m[38;5;3m +273ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:34 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:34 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:34 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:34 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUserModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:34 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mRoomModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:34 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mChatModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:34 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAlertModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:34 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:35 PM [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mChatGateway subscribed to the "chat" message[39m[38;5;3m +746ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:35 PM [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mChatGateway subscribed to the "join" message[39m[38;5;3m +1ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:35 PM [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mChatGateway subscribed to the "leave" message[39m[38;5;3m +0ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:35 PM [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mAlertGateway subscribed to the "invite" message[39m[38;5;3m +1ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:35 PM [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mAlertGateway subscribed to the "ignore" message[39m[38;5;3m +0ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:35 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +3ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:35 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/signUp, POST} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:35 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/mail/verify, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:35 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/mail/confirm, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:35 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/mail/deny, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:35 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/signIn, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:35 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/kakao, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:35 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/google, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:35 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/google/redirect, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:35 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/facebook, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:35 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/facebook/redirect, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:35 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/apple, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:35 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/apple/redirect, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:35 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/update, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:35 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/update, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 161219  - [39m02/25/2025, 5:55:35 PM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +8ms[39m
+2025-02-25T18:07:14.546Z ::ffff:128.134.246.1 connection
+2025-02-25T18:07:38.508Z ::ffff:128.134.246.1 disconnection
+2025-02-25T18:07:54.027Z ::ffff:128.134.246.1 connection
+2025-02-25T18:08:23.084Z ::ffff:128.134.246.1 disconnection
+2025-02-25T18:08:31.166Z ::ffff:128.134.246.1 connection
+[31m[Nest] 161219  - [39m02/25/2025, 6:47:15 PM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39m[31mThis authorization code has expired.[39m
+FacebookTokenError: This authorization code has expired.
+    at FacebookStrategy.Strategy.parseErrorResponse (/home/ubuntu/wiggly/wiggly-nest/node_modules/passport-facebook/lib/strategy.js:198:12)
+    at FacebookStrategy.OAuth2Strategy._createOAuthError (/home/ubuntu/wiggly/wiggly-nest/node_modules/passport-oauth2/lib/strategy.js:420:16)
+    at /home/ubuntu/wiggly/wiggly-nest/node_modules/passport-oauth2/lib/strategy.js:177:45
+    at /home/ubuntu/wiggly/wiggly-nest/node_modules/oauth/lib/oauth2.js:196:18
+    at passBackControl (/home/ubuntu/wiggly/wiggly-nest/node_modules/oauth/lib/oauth2.js:132:9)
+    at IncomingMessage.<anonymous> (/home/ubuntu/wiggly/wiggly-nest/node_modules/oauth/lib/oauth2.js:157:7)
+    at IncomingMessage.emit (node:events:536:35)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at processTicksAndRejections (node:internal/process/task_queues:90:21)
+[31m[Nest] 161219  - [39m02/25/2025, 6:47:42 PM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39m[31mauthorization code not found for code=dJ7VDFGPQXWunZJn80UZF86Vw4CVCO5FyChtertKgfj4aQoM3gGLzgAAAAQKKiWOAAABlT49ZAbmTYKY7N6ACw[39m
+TokenError: authorization code not found for code=dJ7VDFGPQXWunZJn80UZF86Vw4CVCO5FyChtertKgfj4aQoM3gGLzgAAAAQKKiWOAAABlT49ZAbmTYKY7N6ACw
+    at KakaoStrategy.OAuth2Strategy.parseErrorResponse (/home/ubuntu/wiggly/wiggly-nest/node_modules/passport-kakao/node_modules/passport-oauth2/lib/strategy.js:298:12)
+    at KakaoStrategy.OAuth2Strategy._createOAuthError (/home/ubuntu/wiggly/wiggly-nest/node_modules/passport-kakao/node_modules/passport-oauth2/lib/strategy.js:345:16)
+    at /home/ubuntu/wiggly/wiggly-nest/node_modules/passport-kakao/node_modules/passport-oauth2/lib/strategy.js:171:43
+    at /home/ubuntu/wiggly/wiggly-nest/node_modules/passport-kakao/node_modules/oauth/lib/oauth2.js:191:18
+    at passBackControl (/home/ubuntu/wiggly/wiggly-nest/node_modules/passport-kakao/node_modules/oauth/lib/oauth2.js:132:9)
+    at IncomingMessage.<anonymous> (/home/ubuntu/wiggly/wiggly-nest/node_modules/passport-kakao/node_modules/oauth/lib/oauth2.js:157:7)
+    at IncomingMessage.emit (node:events:536:35)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at processTicksAndRejections (node:internal/process/task_queues:90:21)
+[31m[Nest] 161219  - [39m02/25/2025, 7:00:18 PM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39m[31mauthorization code not found for code=RL15VPFUoj-Yy8xcCp7g7CdhqTfTpQXk_Q22r_iGaszRQoxRYUauSQAAAAQKPXKYAAABlT54cp5SGUcvaFb1Eg[39m
+TokenError: authorization code not found for code=RL15VPFUoj-Yy8xcCp7g7CdhqTfTpQXk_Q22r_iGaszRQoxRYUauSQAAAAQKPXKYAAABlT54cp5SGUcvaFb1Eg
+    at KakaoStrategy.OAuth2Strategy.parseErrorResponse (/home/ubuntu/wiggly/wiggly-nest/node_modules/passport-kakao/node_modules/passport-oauth2/lib/strategy.js:298:12)
+    at KakaoStrategy.OAuth2Strategy._createOAuthError (/home/ubuntu/wiggly/wiggly-nest/node_modules/passport-kakao/node_modules/passport-oauth2/lib/strategy.js:345:16)
+    at /home/ubuntu/wiggly/wiggly-nest/node_modules/passport-kakao/node_modules/passport-oauth2/lib/strategy.js:171:43
+    at /home/ubuntu/wiggly/wiggly-nest/node_modules/passport-kakao/node_modules/oauth/lib/oauth2.js:191:18
+    at passBackControl (/home/ubuntu/wiggly/wiggly-nest/node_modules/passport-kakao/node_modules/oauth/lib/oauth2.js:132:9)
+    at IncomingMessage.<anonymous> (/home/ubuntu/wiggly/wiggly-nest/node_modules/passport-kakao/node_modules/oauth/lib/oauth2.js:157:7)
+    at IncomingMessage.emit (node:events:536:35)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at processTicksAndRejections (node:internal/process/task_queues:90:21)
+[31m[Nest] 161219  - [39m02/25/2025, 7:33:29 PM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39m[31mBad Request[39m
+TokenError: Bad Request
+    at GoogleStrategy.OAuth2Strategy.parseErrorResponse (/home/ubuntu/wiggly/wiggly-nest/node_modules/passport-oauth2/lib/strategy.js:373:12)
+    at GoogleStrategy.OAuth2Strategy._createOAuthError (/home/ubuntu/wiggly/wiggly-nest/node_modules/passport-oauth2/lib/strategy.js:420:16)
+    at /home/ubuntu/wiggly/wiggly-nest/node_modules/passport-oauth2/lib/strategy.js:177:45
+    at /home/ubuntu/wiggly/wiggly-nest/node_modules/oauth/lib/oauth2.js:196:18
+    at passBackControl (/home/ubuntu/wiggly/wiggly-nest/node_modules/oauth/lib/oauth2.js:132:9)
+    at IncomingMessage.<anonymous> (/home/ubuntu/wiggly/wiggly-nest/node_modules/oauth/lib/oauth2.js:157:7)
+    at IncomingMessage.emit (node:events:536:35)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at processTicksAndRejections (node:internal/process/task_queues:90:21)
+Terminated
+Terminated
+
+> wiggly@0.0.1 start
+> NODE_OPTIONS=--max_old_space_size=2048 nest start
+
+DeprecationWarning: 'createImportEqualsDeclaration' has been deprecated since v4.8.0. Decorators are no longer supported for this function. Callers should switch to an overload that does not accept a 'decorators' parameter.
+DeprecationWarning: 'createNodeArray' has been deprecated since v4.0.0. Use the appropriate method on 'ts.factory' or the 'factory' supplied by your transformation context instead.
+DeprecationWarning: 'createMethodDeclaration' has been deprecated since v4.8.0. Decorators have been combined with modifiers. Callers should switch to an overload that does not accept a 'decorators' parameter.
+DeprecationWarning: 'updateClassDeclaration' has been deprecated since v4.8.0. Decorators have been combined with modifiers. Callers should switch to an overload that does not accept a 'decorators' parameter.
+DeprecationWarning: 'getMutableClone' has been deprecated since v4.0.0. Use an appropriate `factory.update...` method instead, use `setCommentRange` or `setSourceMapRange`, and avoid setting `parent`.
+DeprecationWarning: 'createLiteral' has been deprecated since v4.0.0. Use `factory.createStringLiteral`, `factory.createStringLiteralFromNode`, `factory.createNumericLiteral`, `factory.createBigIntLiteral`, `factory.createTrue`, `factory.createFalse`, or the factory supplied by your transformation context instead.
+(node:166479) [DEP0053] DeprecationWarning: The `util.isObject` API is deprecated. Please use `arg !== null && typeof arg === "object"` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:166506) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:37 AM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +279ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMailModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mDiscoveryModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mScheduleModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmCoreModule dependencies initialized[39m[38;5;3m +299ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUserModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mRoomModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mChatModule dependencies initialized[39m[38;5;3m +3ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAlertModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:38 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:39 AM [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mChatGateway subscribed to the "chat" message[39m[38;5;3m +928ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:39 AM [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mChatGateway subscribed to the "join" message[39m[38;5;3m +0ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:39 AM [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mChatGateway subscribed to the "leave" message[39m[38;5;3m +0ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:39 AM [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mAlertGateway subscribed to the "invite" message[39m[38;5;3m +3ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:39 AM [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mAlertGateway subscribed to the "ignore" message[39m[38;5;3m +0ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:39 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +2ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:39 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/signUp, POST} route[39m[38;5;3m +4ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:39 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/mail/verify, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:39 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/mail/confirm, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:39 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/mail/deny, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:39 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/signIn, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:39 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/kakao, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:39 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/google, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:39 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/google/redirect, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:39 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/facebook, GET} route[39m[38;5;3m +9ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:39 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/facebook/redirect, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:39 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/apple, GET} route[39m[38;5;3m +12ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:39 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/apple/redirect, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:39 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/update, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:39 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/update, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 166506  - [39m02/26/2025, 6:07:39 AM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +14ms[39m
+[31m[Nest] 166506  - [39m02/26/2025, 6:07:52 AM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39m[31mTokenError[39m
+Terminated
+
+> wiggly@0.0.1 start
+> NODE_OPTIONS=--max_old_space_size=2048 nest start
+
+
+> wiggly@0.0.1 start
+> NODE_OPTIONS=--max_old_space_size=2048 nest start
+
+DeprecationWarning: 'createImportEqualsDeclaration' has been deprecated since v4.8.0. Decorators are no longer supported for this function. Callers should switch to an overload that does not accept a 'decorators' parameter.
+DeprecationWarning: 'createNodeArray' has been deprecated since v4.0.0. Use the appropriate method on 'ts.factory' or the 'factory' supplied by your transformation context instead.
+DeprecationWarning: 'createMethodDeclaration' has been deprecated since v4.8.0. Decorators have been combined with modifiers. Callers should switch to an overload that does not accept a 'decorators' parameter.
+DeprecationWarning: 'updateClassDeclaration' has been deprecated since v4.8.0. Decorators have been combined with modifiers. Callers should switch to an overload that does not accept a 'decorators' parameter.
+DeprecationWarning: 'getMutableClone' has been deprecated since v4.0.0. Use an appropriate `factory.update...` method instead, use `setCommentRange` or `setSourceMapRange`, and avoid setting `parent`.
+DeprecationWarning: 'createLiteral' has been deprecated since v4.0.0. Use `factory.createStringLiteral`, `factory.createStringLiteralFromNode`, `factory.createNumericLiteral`, `factory.createBigIntLiteral`, `factory.createTrue`, `factory.createFalse`, or the factory supplied by your transformation context instead.
+(node:214551) [DEP0053] DeprecationWarning: The `util.isObject` API is deprecated. Please use `arg !== null && typeof arg === "object"` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:214565) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:36 PM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:37 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +360ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:37 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:37 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:37 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMailModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:37 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:37 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mDiscoveryModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:37 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:37 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mScheduleModule dependencies initialized[39m[38;5;3m +14ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:37 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:37 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmCoreModule dependencies initialized[39m[38;5;3m +189ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:37 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:37 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:37 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTypeOrmModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:37 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUserModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:37 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mRoomModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:37 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mChatModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:37 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAlertModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:37 PM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:38 PM [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mChatGateway subscribed to the "chat" message[39m[38;5;3m +726ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:38 PM [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mChatGateway subscribed to the "join" message[39m[38;5;3m +2ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:38 PM [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mChatGateway subscribed to the "leave" message[39m[38;5;3m +0ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:38 PM [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mAlertGateway subscribed to the "invite" message[39m[38;5;3m +9ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:38 PM [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mAlertGateway subscribed to the "ignore" message[39m[38;5;3m +1ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:38 PM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +2ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:38 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/signUp, POST} route[39m[38;5;3m +4ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:38 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/mail/verify, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:38 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/mail/confirm, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:38 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/mail/deny, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:38 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/signIn, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:38 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/kakao, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:38 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/google, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:38 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/google/redirect, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:38 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/facebook, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:38 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/facebook/redirect, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:38 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/apple, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:38 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/apple/redirect, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:38 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/update, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:38 PM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/update, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 214565  - [39m03/02/2025, 5:09:38 PM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +13ms[39m
+{ loginId: 'jumo.kang77@gmail.com', password: 'asd' }
+2025-03-02T17:24:11.916Z ::ffff:128.134.246.1 connection
+2025-03-02T20:34:47.266Z ::ffff:128.134.246.1 disconnection
+2025-03-02T20:34:47.270Z TokenExpiredError: jwt expired
+    at /home/ubuntu/wiggly/wiggly-nest/node_modules/@nestjs/jwt/node_modules/jsonwebtoken/verify.js:152:21
+    at getSecret (/home/ubuntu/wiggly/wiggly-nest/node_modules/@nestjs/jwt/node_modules/jsonwebtoken/verify.js:90:14)
+    at Object.module.exports [as verify] (/home/ubuntu/wiggly/wiggly-nest/node_modules/@nestjs/jwt/node_modules/jsonwebtoken/verify.js:94:10)
+    at JwtService.verify (/home/ubuntu/wiggly/wiggly-nest/node_modules/@nestjs/jwt/dist/jwt.service.js:38:20)
+    at AuthService.verifyAccessToken (/home/ubuntu/wiggly/wiggly-nest/src/auth/auth.service.ts:178:30)
+    at AuthService.fromSocket (/home/ubuntu/wiggly/wiggly-nest/src/auth/auth.service.ts:230:24)
+    at ChatGateway.handleDisconnect (/home/ubuntu/wiggly/wiggly-nest/src/chat/chat.gateway.ts:98:38)
+    at ConsumerObserver.next (/home/ubuntu/wiggly/wiggly-nest/node_modules/rxjs/src/internal/Subscriber.ts:161:25)
+    at SafeSubscriber.Subscriber._next (/home/ubuntu/wiggly/wiggly-nest/node_modules/rxjs/src/internal/Subscriber.ts:119:22)
+    at SafeSubscriber.Subscriber.next (/home/ubuntu/wiggly/wiggly-nest/node_modules/rxjs/src/internal/Subscriber.ts:75:12) {
+  expiredAt: 2025-03-02T18:09:43.000Z
+}
+2025-03-02T20:34:47.384Z invalid jwt TokenExpiredError: jwt expired
+    at /home/ubuntu/wiggly/wiggly-nest/node_modules/@nestjs/jwt/node_modules/jsonwebtoken/verify.js:152:21
+    at getSecret (/home/ubuntu/wiggly/wiggly-nest/node_modules/@nestjs/jwt/node_modules/jsonwebtoken/verify.js:90:14)
+    at Object.module.exports [as verify] (/home/ubuntu/wiggly/wiggly-nest/node_modules/@nestjs/jwt/node_modules/jsonwebtoken/verify.js:94:10)
+    at JwtService.verify (/home/ubuntu/wiggly/wiggly-nest/node_modules/@nestjs/jwt/dist/jwt.service.js:38:20)
+    at AuthService.verifyAccessToken (/home/ubuntu/wiggly/wiggly-nest/src/auth/auth.service.ts:178:30)
+    at AuthService.fromSocket (/home/ubuntu/wiggly/wiggly-nest/src/auth/auth.service.ts:230:24)
+    at ChatGateway.handleDisconnect (/home/ubuntu/wiggly/wiggly-nest/src/chat/chat.gateway.ts:98:38)
+    at ConsumerObserver.next (/home/ubuntu/wiggly/wiggly-nest/node_modules/rxjs/src/internal/Subscriber.ts:161:25)
+    at SafeSubscriber.Subscriber._next (/home/ubuntu/wiggly/wiggly-nest/node_modules/rxjs/src/internal/Subscriber.ts:119:22)
+    at SafeSubscriber.Subscriber.next (/home/ubuntu/wiggly/wiggly-nest/node_modules/rxjs/src/internal/Subscriber.ts:75:12) {
+  expiredAt: 2025-03-02T18:09:43.000Z
+}
+2025-03-02T20:48:13.164Z TokenExpiredError: jwt expired
+    at /home/ubuntu/wiggly/wiggly-nest/node_modules/@nestjs/jwt/node_modules/jsonwebtoken/verify.js:152:21
+    at getSecret (/home/ubuntu/wiggly/wiggly-nest/node_modules/@nestjs/jwt/node_modules/jsonwebtoken/verify.js:90:14)
+    at Object.module.exports [as verify] (/home/ubuntu/wiggly/wiggly-nest/node_modules/@nestjs/jwt/node_modules/jsonwebtoken/verify.js:94:10)
+    at JwtService.verify (/home/ubuntu/wiggly/wiggly-nest/node_modules/@nestjs/jwt/dist/jwt.service.js:38:20)
+    at AuthService.verifyAccessToken (/home/ubuntu/wiggly/wiggly-nest/src/auth/auth.service.ts:178:30)
+    at AuthController.update (/home/ubuntu/wiggly/wiggly-nest/src/auth/auth.controller.ts:129:44)
+    at /home/ubuntu/wiggly/wiggly-nest/node_modules/@nestjs/core/router/router-execution-context.js:38:29
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at /home/ubuntu/wiggly/wiggly-nest/node_modules/@nestjs/core/router/router-execution-context.js:46:28
+    at /home/ubuntu/wiggly/wiggly-nest/node_modules/@nestjs/core/router/router-proxy.js:9:17 {
+  expiredAt: 2025-03-01T06:10:44.000Z
+}
+[31m[Nest] 214565  - [39m03/02/2025, 8:48:13 PM [31m  ERROR[39m [38;5;3m[ExceptionsHandler] [39m[31mjwt expired[39m
+TokenExpiredError: jwt expired
+    at /home/ubuntu/wiggly/wiggly-nest/node_modules/@nestjs/jwt/node_modules/jsonwebtoken/verify.js:152:21
+    at getSecret (/home/ubuntu/wiggly/wiggly-nest/node_modules/@nestjs/jwt/node_modules/jsonwebtoken/verify.js:90:14)
+    at Object.module.exports [as verify] (/home/ubuntu/wiggly/wiggly-nest/node_modules/@nestjs/jwt/node_modules/jsonwebtoken/verify.js:94:10)
+    at JwtService.verify (/home/ubuntu/wiggly/wiggly-nest/node_modules/@nestjs/jwt/dist/jwt.service.js:38:20)
+    at AuthService.verifyAccessToken (/home/ubuntu/wiggly/wiggly-nest/src/auth/auth.service.ts:178:30)
+    at AuthController.update (/home/ubuntu/wiggly/wiggly-nest/src/auth/auth.controller.ts:129:44)
+    at /home/ubuntu/wiggly/wiggly-nest/node_modules/@nestjs/core/router/router-execution-context.js:38:29
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at /home/ubuntu/wiggly/wiggly-nest/node_modules/@nestjs/core/router/router-execution-context.js:46:28
+    at /home/ubuntu/wiggly/wiggly-nest/node_modules/@nestjs/core/router/router-proxy.js:9:17
+{ loginId: 'jumo.kang77@gmail.com', password: 'asd' }
+{ loginId: 'jumo.kang77@gmail.com', password: 'asd' }
+{ loginId: 'jumo.kang77@gmail.com', password: 'asd' }
