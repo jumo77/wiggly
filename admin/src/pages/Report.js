@@ -4,7 +4,6 @@ import {ServerUrl} from "../common/ServerUrl";
 import {Section} from "../component/ui/Section";
 import {snakeToCamel} from "../common/Functions";
 import {map} from "../common/TextMap";
-import {logDOM} from "@testing-library/dom";
 import {User} from "../component/User";
 import {Feed} from "../component/Feed";
 
@@ -56,8 +55,8 @@ export const Report = () => {
     return (
         <main style={{marginLeft: 400}}>
             <h1 style={{font: "50px bold", padding: "30px 50px",}}>사용자 및 컨텐츠 관리</h1>
-            {report && data && typeof data === 'object' && (type === 'user' || type === 'post') ?
-                <Section title={type === 'post' ? '신고 접수된 컨텐츠' : type === 'user' ? '신고 접수된 계정' : null}>
+            {report && data && typeof data === 'object' && (type === 'user' || type === 'feed') ?
+                <Section title={type === 'feed' ? '신고 접수된 컨텐츠' : type === 'user' ? '신고 접수된 계정' : null}>
                     {Object.keys(data).map((it, index) => index < Object.keys(data).length - 1 &&
                         <div style={{display: "flex", flexDirection: "row"}}>
                             <div style={{width: "30%"}}>{map[it]}</div>
@@ -65,7 +64,7 @@ export const Report = () => {
                         </div>)}
                     <div style={{display: "flex", flexDirection: "row"}}>
                         <div style={{width: "30%"}}>
-                            {type === 'user' ? '회원 상태' : type === 'post' ? '콘텐츠 상태' : null}
+                            {type === 'user' ? '회원 상태' : type === 'feed' ? '콘텐츠 상태' : null}
                         </div>
                         <div style={{width: "70%"}}>
                             <select value={status} onChange={event => setStatus(event.target.value)}>
